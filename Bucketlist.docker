@@ -1,0 +1,13 @@
+const fs = require('fs');
+const { upload } = require('../config/multerConfig')
+const UploadModel = require('../model/uploads.model');
+
+//Upload Files to a Bucket and store same to Mongo DB
+router.post("/uploadFileInBucket", Auth.userAuthMiddleWare, upload().single("myFile"), async (req, res) => {
+    if (req.file) {
+        const filefullPath = req.file.destination + req.file.filename;
+        const uploaded = new UploadModel({ userId: req.user._id, filename: req.file.filename, mimeType: req.file.mimetype, path: filefullPath });
+        await uploaded.save();
+        res.json({ status: true, success: "File Uploaded Successfully" });
+    }
+});
