@@ -4,7 +4,7 @@ Company : Codtech IT solutions
 
 Intern ID :  CT08DS601
 
-Domain : Cloud Computinh\g
+Domain : Cloud Computing
 
 Duration : December to January
 
